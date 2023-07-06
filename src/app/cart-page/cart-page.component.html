@@ -1,0 +1,54 @@
+<app-not-found [visible]="!cart || cart.items.length <=0"
+notFoundMessage="items not Found!"
+resetLinkText="Go To Homepage!"></app-not-found>
+<div *ngIf="cart && cart.items.length >0" class="container">
+<ul>
+  <li *ngFor="let cartItem of cart.items">
+    <div>
+    <img [src]="cartItem.food.imageUrl" [alt]="cartItem.food.name">
+  </div>
+  <div>
+    <a routerLink="/food/{{cartItem.food.id}}">
+      {{cartItem.food.name}}
+    </a>
+  </div>
+  <div>
+    <!-- <select #quantitySelect (change)="changeQuantity(cartItem,quantitySelect.value)"> -->
+   <!-- <option>1</option>
+   <option>2</option>
+   <option>3</option>
+   <option>4</option>
+   <option>5</option> -->
+   <input type="text" [(ngModel)]="num">
+  
+    
+  </div>
+  <div>
+    {{cartItem.price | currency}}
+  </div>
+  <div>
+    <button class="remove-button" (click)="removeFromCart(cartItem)">
+      Remove
+    </button>
+  </div>
+
+  </li>
+</ul>
+<div class="checkout">
+  <div>
+  <div class="foods-count">
+    {{cart.items.length}}
+  </div>
+  <div class="total-price">
+    {{cart.totalPrice*num | currency }}
+  </div>
+  </div>
+  <a href="#" onclick="alert('order placed successfully !');">Place an oerder</a>
+  <!-- <a href="">Place an order</a> -->
+  <!-- <a href="" routerLink="/checkout">Place an order</a> -->
+  <!-- <div class=" mt-3 col-lg-12 col-12">
+    <button class="btn">Submit</button>
+  </div> -->
+</div>
+
+</div>

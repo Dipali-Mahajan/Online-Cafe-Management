@@ -1,0 +1,44 @@
+<div class="container mt-5">
+  <form class="content" [formGroup]="contactForm" (ngSubmit)="submitData()">
+    <h1 class="text-center">Contact Us</h1>
+    <div class="row">
+
+      <div class="mt-2 mb-2 col-lg-12 col-13">
+        <input type="text" formControlName="fullname"  class="form-control" placeholder="Full Name">
+        <div *ngIf="fullname.invalid && fullname.touched || fullname.dirty">
+           <span class="error" *ngIf="fullname.errors?.required">*Full Name is Required.</span>
+
+        </div>
+       </div>
+
+
+      <div class="mt-2 mb-2 col-lg-12 col-12">
+        <input type="text" formControlName="emailid" class="form-control" placeholder="Email id">
+        <div *ngIf="emailid.invalid && (emailid.touched ||emailid.dirty)">
+          <span class="error" *ngIf="emailid.errors?.required">*Email Id is Required.</span>
+          <span class="error" *ngIf="emailid.errors?.email">*Enter valid Email Id.</span>
+       </div>
+      </div>
+      <div class="mt-2 mb-2 col-lg-12 col-12">
+        <input type="text" formControlName="mobilenumber" class="form-control" placeholder="Mobile Number">
+        <div *ngIf="mobilenumber.invalid && mobilenumber.touched || mobilenumber.dirty">
+          <span class="error" *ngIf="mobilenumber.errors?.required">*Mobile Number is Required.</span>
+          <span class="error" *ngIf="mobilenumber.errors?.pattern">*Enter only Number.</span>
+       </div>
+      </div>
+      <div class="mt-2 mb-2 col-lg-12 col-12">
+        <input type="text" formControlName="address" class="form-control" placeholder="Address">
+        <div *ngIf="address.invalid && address.touched || address.dirty">
+          <span class="error" *ngIf="address.errors?.required">*Address is Required.</span>
+
+       </div>
+      </div>
+      <div class=" mt-3 col-lg-12 col-12">
+        <button class="btn" [disabled]="contactForm.invalid">Submit</button>
+      </div>
+    </div>
+  </form>
+
+</div>
+
+
